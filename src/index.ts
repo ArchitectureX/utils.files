@@ -132,12 +132,11 @@ const files = {
       }
     }
   },
-  uploadFiles: async (files: any) => {
+  uploadFiles: async (files: any, fileUploadEndPoint: string) => {
     if (!files) {
       return
     }
 
-    const fileUploadEndPoint = '/api/v1/uploader'
     const formData = new FormData()
 
     files.forEach((file: any) => {
