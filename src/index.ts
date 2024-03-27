@@ -143,13 +143,11 @@ const files = {
       formData.append(`files`, file.file)
     })
 
-    const multiUploadResponse = await fetch(fileUploadEndPoint, {
+    const response = await fetch(fileUploadEndPoint, {
       method: 'POST',
       body: formData
     })
-
-    console.log('⚡ Files Response', multiUploadResponse)
-    //TODO: handle response
+    return response
   },
   generateUniqueFileName: (originalFileName: string) => {
     const { fileName, extension } = files.getFileNameAndExtension(originalFileName)
