@@ -1,5 +1,6 @@
 import security from '@architecturex/utils.security'
 import slug from '@architecturex/utils.slug'
+import api from '@architecturex/utils.api'
 
 const files = {
   bytesToSize: (bytes: number, maxFileSize: number, round?: boolean) => {
@@ -143,9 +144,10 @@ const files = {
       formData.append(`files`, file.file)
     })
 
-    const response = await fetch(fileUploadEndPoint, {
+    const response = await api.fetch(fileUploadEndPoint, {
       method: 'POST',
-      body: formData
+      body: formData,
+      addLocalHost: process.env.NODE_ENV === 'development'
     })
     return response
   },
