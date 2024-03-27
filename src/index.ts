@@ -22,6 +22,23 @@ const files = {
       allowed
     }
   },
+  deleteFile: async (file: string): Promise<boolean> => {
+    if (!file) {
+      return false
+    }
+
+    const response = await fetch(`/api/v1/uploader/${file}`, {
+      method: 'DELETE'
+    })
+
+    const responseData = await response.json()
+
+    if (responseData) {
+      return true
+    }
+
+    return false
+  },
   getFileNameAndExtension: (file: any): { fileName: string; extension: string } => {
     if (!file) {
       return {
