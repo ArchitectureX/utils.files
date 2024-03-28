@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "@architecturex/devtools": "1.0.8",
-    "@architecturex/utils.api": "^1.1.11",
+    "@architecturex/utils.api": "^1.1.12",
     "@architecturex/utils.security": "^1.0.11",
     "@architecturex/utils.slug": "^1.0.4",
     "ts-loader": "^9.4.4",
