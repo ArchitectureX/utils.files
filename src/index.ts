@@ -147,6 +147,7 @@ const files = {
     const response = await api.fetch(fileUploadEndPoint, {
       method: 'POST',
       body: formData,
+      bodyType: 'form-data',
       addLocalHost: process.env.NODE_ENV === 'development'
     })
     return response
