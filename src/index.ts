@@ -214,7 +214,7 @@ const files = {
   },
   getFileDir: (fileName: string) => {
     const { extension } = files.getFileInfo(fileName)
-    let dir = path.join(__dirname, '../../public/files')
+    let dir = path.join(__dirname, '../../../../public/files')
 
     const isImage = ['png', 'jpg', 'jpeg'].includes(extension)
 
