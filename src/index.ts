@@ -1,3 +1,4 @@
+import path from 'path'
 import security from '@architecturex/utils.security'
 import slug from '@architecturex/utils.slug'
 import api from '@architecturex/utils.api'
@@ -193,6 +194,34 @@ const files = {
     const fileListArray = Array.from(fileList)
     const formattedFileList = fileListArray.map((file) => files.formatFileData(file))
     return Promise.all(formattedFileList)
+  },
+  getFileInfo: (file: string) => {
+    if (!file) {
+      return {
+        fileName: '',
+        extension: ''
+      }
+    }
+
+    const parts = file.split('.')
+    const extension = parts.pop() || ''
+    const fileName = parts.pop() || ''
+
+    return {
+      fileName,
+      extension: extension.toLowerCase()
+    }
+  },
+  getFileDir: (fileName: string) => {
+    const { extension } = files.getFileInfo(fileName)
+    let dir = path.join(__dirname, '../../public/files')
+
+    const isImage = ['png', 'jpg', 'jpeg'].includes(extension)
+
+    if (isImage) {
+      dir += dir.includes('\\') ? '\\images' : '/images'
+    }
+    return dir
   }
 }
 
